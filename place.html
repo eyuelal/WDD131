@@ -7,9 +7,10 @@
       name="description"
       content=" This is a Temple Album website that displays lds church temples."
     />
-    <meta name="author" content="Eyuel Temesgen" />
+    <meta name="author" content="Eyuel Temesgen"/>
   <title>ETHIOPIA</title>
   <link rel="stylesheet" href="styles/place.css">
+
   <script src="scripts/place.js" defer></script>
 </head>
 <body>
@@ -20,12 +21,15 @@
   <main>
     <section class="cuzco">
       <picture>
-        <img src="images/landscape.jpeg" alt="cuzco landscape">
+        <source srcset="images/landscape.webp" type="images/webp">
+        <img src="images/landscape.webp" alt="cuzco landscape">
       </picture>
     </section>
 
     <section class="data">
       <h2>Data 📊</h2>
+      <img src="data-icon.svg" alt="data Icon" class="data-icon">
+
       <ul>
         <li><strong>Area:</strong> 72,104 km²</li>
         <li><strong>Population:</strong> 126.5 million </li>
@@ -40,6 +44,8 @@
 
     <section class="weather">
       <h2>Weather ⛅</h2>
+      <img src="weather-icon.svg" alt="Weather Icon" class="weather-icon">
+
       <ul>
         <li><strong>Temperature:</strong> <span id="temp">8 °C</span></li>
         <li><strong>Conditions:</strong> Partly Cloudy</li>
