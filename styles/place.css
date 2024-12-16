@@ -1,189 +1,200 @@
 :root {
-    --primary-color: #800000;
-    --secondary-color: #004225;
-    --background-color: #f5f5f5;
-    --text-color: white;
-    --overlay-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  header {
-    background-color: var(--primary-color);
-    padding: 1em;
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 2.5rem;
-  }
-  
-  main {
-    flex: 1;
+  --primary-color: #d44333;
+  --secondary-color: #222;
+  --background-color: #f4f4f4;
+  --text-color: #333;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  /* Add bottom margin to create space */
+  margin-bottom: 20px;
+}
+
+.weather-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0; /* Adjusted padding for better spacing */
+}
+
+.hero-background img {
+  width: 100%; /* Ensures the image is full width on small screens */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%; /* Full width on small screens */
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Semi-transparent background for readability */
+}
+
+.weather-box,
+.data-section {
+  background: white;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.weather-box h2 {
+  display: flex; /* Makes the header and the image inline-flexible */
+  align-items: center; /* Aligns items vertically in the center */
+  flex-wrap: wrap; /* Allows items to wrap to a new line */
+}
+
+.weather-icon {
+  margin-left: 10px; /* Adds space between the text and the icon */
+  width: 24px; /* Adjust icon size */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.weather-box h2 {
+  flex-direction: column; /* Stacks items vertically on small screens */
+}
+
+.weather-icon {
+  margin-left: 0; /* Remove left margin on small screens */
+  margin-top: 10px; /* Adds space above the icon */
+}
+footer {
+  background-color: var(--secondary-color);
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+  margin-top: 20px;
+}
+
+@media (min-width: 1024px) {
+  .weather-section {
     position: relative;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    padding: 0; /* No padding */
   }
-  
-  .cuzco img {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
+
+  .hero-background img {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire section */
+    z-index: -1; /* Send to back */
+    display: block; /* Ensure it's displayed */
   }
-  
-  .data, .weather {
+
+  .content-container {
+    position: relative; /* Positioned relative to the section */
+    display: flex;
+    flex-direction: row;
+    width: 100%; /* Adjust to necessary width */
+    z-index: 2; /* Above the background image */
+    background: none; /* No background for container */
+  }
+
+  .weather-box,
+  .data-section {
+    width: 50%; /* Each takes half of the container width */
+    background: rgba(
+      255,
+      255,
+      255,
+      0.9
+    ); /* Slightly transparent for visibility */
+  }
+}
+@media (min-width: 600px) {
+  .weather-section {
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    padding: 0; /* No padding */
+  }
+
+  .hero-background img {
     position: absolute;
-    background-color: var(--overlay-color);
-    padding: 1.5em;
-    border-radius: 10px;
-    z-index: 2;
-  }
-  
-  .data {
-    top: 20px;
-    left: 20px;
-    width: 30%;
-  }
-  
-  .weather {
-    bottom: 60px;
-    right: 20px;
-    width: 30%;
-  }
-  
-  h2 {
-    background-color: var(--secondary-color);
-    padding: 0.5em;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  ul {
-    list-style: none;
-    margin-top: 1em;
-  }
-  
-  footer {
-    background-color: var(--primary-color);
-    text-align: center;
-    padding: 2em;
-    color: var(--text-color);
-    position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
-    z-index: 2;
+    height: 100%;
+    object-fit: cover; /* Cover the entire section */
+    z-index: -1; /* Send to back */
+    display: block; /* Ensure it's displayed */
   }
-  
-  @media (max-width: 768px) {
-    /* .data, .weather {
-      width: 80%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  
-    .data {
-      top: 10px;
-    }
-  
-    .weather {
-      bottom: 10px;
-    }
-    .weather::after {
-      display: inline-block;
-      } */
 
+  .content-container {
+    position: relative; /* Positioned relative to the section */
+    display: flex;
+    flex-direction: row;
+    width: 100%; /* Adjust to necessary width */
+    z-index: 2; /* Above the background image */
+    background: none; /* No background for container */
   }
-  
-  
-  .foot {
-    margin-bottom: -8%;
+
+  .weather-box,
+  .data-section {
+    width: 50%; /* Each takes half of the container width */
+    background: rgba(
+      255,
+      255,
+      255,
+      0.9
+    ); /* Slightly transparent for visibility */
   }
-  
-  /* .roboto-thin {
-    font-family: "Roboto", serif;
-    font-weight: 100;
-    font-style: normal;
+  footer {
+    background-color: var(--secondary-color);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    margin-top: 20px;
   }
-  
-  .roboto-light {
-    font-family: "Roboto", serif;
-    font-weight: 300;
-    font-style: normal;
+
+  /* Additional styles for icons and other elements */
+  .weather-icon {
+    height: 24px; /* Adjust size as needed */
+    vertical-align: middle;
   }
-  
-  .roboto-regular {
-    font-family: "Roboto", serif;
-    font-weight: 400;
-    font-style: normal;
+  .weather-box h2 {
+    flex-direction: row; /* Stacks items horizontally on big screens */
   }
-  
-  .roboto-medium {
-    font-family: "Roboto", serif;
-    font-weight: 500;
-    font-style: normal;
+  .weather-heading::after {
+    display: inline-block;
+    margin-left: 10px; /* Space between the text and the icon */
+    font-size: 24px; /* Icon size */
+    vertical-align: middle; /* Aligns icon with the middle of the text */
   }
-  
-  .roboto-bold {
-    font-family: "Roboto", serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-  
-  .roboto-black {
-    font-family: "Roboto", serif;
-    font-weight: 900;
-    font-style: normal;
-  }
-  
-  .roboto-thin-italic {
-    font-family: "Roboto", serif;
-    font-weight: 100;
-    font-style: italic;
-  }
-  
-  .roboto-light-italic {
-    font-family: "Roboto", serif;
-    font-weight: 300;
-    font-style: italic;
-  }
-  
-  .roboto-regular-italic {
-    font-family: "Roboto", serif;
-    font-weight: 400;
-    font-style: italic;
-  }
-  
-  .roboto-medium-italic {
-    font-family: "Roboto", serif;
-    font-weight: 500;
-    font-style: italic;
-  }
-  
-  .roboto-bold-italic {
-    font-family: "Roboto", serif;
-    font-weight: 700;
-    font-style: italic;
-  }
-  
-  .roboto-black-italic {
-    font-family: "Roboto", serif;
-    font-weight: 900;
-    font-style: italic;
-  }
-   */
+}
+footer {
+  background-color: var(--secondary-color);
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+  margin-top: 20px;
+}
